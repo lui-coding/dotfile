@@ -20,7 +20,15 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
-config.font_size = 10
+config.font_size = 14
+local mux = wezterm.mux
 
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+wezterm.on("gui-startup", function()
+	local tab, pane, window = mux.spawn_window(cmd or {})
+	window:gui_window():toggle_fullscreen()
+end)
+
+-- config.native_macos_fullscreen_mode = true
 -- and finally, return the configuration to wezterm
 return config
