@@ -110,6 +110,8 @@ alias nv="nvim"
 
 export NVM_DIR="$HOME/.nvm"
 export PATH="/Applications/neovim/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export JAVA_TOOL_OPTIONS=-Duser.language=en
 
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
