@@ -37,3 +37,5 @@ vim.keymap.set('n', '<leader>R', function()
     vim.cmd '!java-algs4 %'
   end
 end, { desc = 'algs4 run ☕️' })
+
+vim.keymap.set('n', '<leader>A', ':!java-algs4 %', { noremap = true, silent = false })
