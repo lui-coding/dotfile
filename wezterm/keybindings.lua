@@ -8,7 +8,7 @@ local M = {}
 ---@field action table
 
 function M.apply_to_config(config)
-	config.leader = { key = "w", mods = "ALT", timeout_milliseconds = 2000 }
+	config.leader = { key = "Space", mods = "ALT", timeout_milliseconds = 2000 }
 	config.keys = {
 		{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
 		{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
