@@ -1,4 +1,4 @@
-local wezterm = require("wezterm")
+local wezterm = require 'wezterm'
 local act = wezterm.action
 local M = {}
 
@@ -8,43 +8,24 @@ local M = {}
 ---@field action table
 
 function M.apply_to_config(config)
-	config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 2000 }
-	config.keys = {
-		{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-		{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-		{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-		{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-		{
-			key = "-",
-			mods = "LEADER",
-			action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-		},
-		{
-			key = "|",
-			mods = "LEADER",
-			action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-		},
-	}
+  config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 2000 }
+  config.keys = {
+    { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left' },
+    { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
+    { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
+    { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
+    {
+      key = '-',
+      mods = 'LEADER',
+      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+    },
+    {
+      key = '|',
+      mods = 'LEADER',
+      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    },
+  }
 end
-wezterm.on("update-status", function(window, pane)
-	local elements = {}
-	if leader_active then
-		table.insert(elements, { Text = "L" })
-	end
-	window:set_left_status(wezterm.format(elements))
-end)
-
--- leader 被激活时触发
-wezterm.on("leader-activate", function(window, pane)
-	leader_active = true
-	window:refresh_status() -- 立即刷新状态区域
-end)
-
--- leader 状态结束时触发（超时或后续键序完成时）
-wezterm.on("leader-deactivate", function(window, pane)
-	leader_active = false
-	window:refresh_status()
-end)
 return M
 
 -- return {
