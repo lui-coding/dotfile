@@ -32,6 +32,7 @@ require('lazy').setup({
   require 'plugins.yazi',
   require 'plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'plugins.auto-session',
+  require 'plugins.auto-save',
   require 'plugins.boole',
 }, {
   ui = {
