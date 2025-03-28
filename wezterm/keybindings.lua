@@ -14,6 +14,7 @@ function M.apply_to_config(config)
     { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
     { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
     { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
+    { key = ';', mods = 'LEADER', action = act.PaneSelect },
     {
       key = '-',
       mods = 'LEADER',
